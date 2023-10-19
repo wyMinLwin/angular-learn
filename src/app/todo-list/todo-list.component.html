@@ -1,0 +1,19 @@
+<div *ngIf="todos.length < 1; else showTodos">
+    <div class="text-xl font-serif text-center font-semibold my-3">There is no todo at moment.</div>
+</div>
+<ng-template #showTodos>
+    <div class="grid grid-cols-12 border-2 px-4 py-2 my-2 rounded-md" *ngFor="let todo of todos; index as i" [attr.data-index]="i">
+        <span class="col-span-1 flex justify-start items-center">
+            <input type="checkbox" [checked]=todo.isComplete aria-label="task-check-box" (change)="toggleComplete(todo)" />
+        </span>
+        <span class="col-span-8 text-lg" [ngClass]="{'line-through opacity-50':todo.isComplete}">{{todo.task}}</span>
+        <span class="col-span-3 flex justify-end items-center gap-1">
+            <button class="flex justify-center items-center">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button class="flex justify-center items-center">
+                <mat-icon>delete_forever</mat-icon>
+            </button>
+        </span>
+    </div>
+</ng-template>

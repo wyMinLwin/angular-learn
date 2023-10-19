@@ -1,0 +1,4 @@
+<form class="flex items-center gap-x-2">
+    <input class="grow px-4 py-1 rounded-md" type="text" name="new-wish-text" [(ngModel)]="newTodoText" aria-label="new-todo-text-form" />
+    <button class="font-sans px-4 py-1 rounded-md bg-sky-300 text-white" type="submit" (click)="$event.preventDefault(); addNewTodo()" >ADD</button>
+</form>

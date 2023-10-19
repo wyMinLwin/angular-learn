@@ -1,24 +1,13 @@
-<div class="w-screen h-screen bg-white/50 flex justify-center items-center">
-    <div class="max-h-full min-h-fit bg-amber-50/80 drop-shadow-md rounded-xl w-11/12 sm:w-9/12 md:w-6/12 lg:w-4/12 px-5 py-2">
-        <div *ngIf="todos.length > 0; then showTodos else noTodos"></div>
-        <ng-template #showTodos>
-            <div class="grid grid-cols-12 border-2 px-4 py-2 my-2 rounded-md" *ngFor="let todo of todos">
-                <span class="col-span-1 flex justify-start items-center">
-                    <input type="checkbox" [checked]=todo.isComplete aria-label="task-check-box" />
-                </span>
-                <span class="col-span-8 text-lg" [ngClass]="{'line-through opacity-50':todo.isComplete}">{{todo.task}}</span>
-                <span class="col-span-3 flex justify-end items-center gap-1">
-                    <button class="flex justify-center items-center">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button class="flex justify-center items-center">
-                        <mat-icon>delete_forever</mat-icon>
-                    </button>
-                </span>
-            </div>
-        </ng-template>
-        <ng-template #noTodos>
-            <div class="text-xl font-serif text-center font-semibold my-3">There is no todo at moment.</div>
-        </ng-template>
+<div class="w-screen h-screen bg-white/50 flex justify-center items-center overflow-hidden py-10">
+    <div class="max-h-full min-h-fit overflow-y-scroll transition-all duration-300 bg-amber-50/80 drop-shadow-md rounded-xl w-11/12 sm:w-9/12 md:w-6/12 lg:w-4/12 px-5 py-2">
+        <add-todo (addTodo)="addNewTodo($event)"></add-todo>
+        <select class="my-2 px-2 py-1 rounded-md" [(ngModel)]="selectedOptionToShow">
+            <option value=0>All</option>
+            <option value=1>Incomplete</option>
+            <option value=2>Completed</option>
+        </select>
+        <todo-list
+            [todos]="todosToShow"
+        ></todo-list>
     </div>
 </div>
