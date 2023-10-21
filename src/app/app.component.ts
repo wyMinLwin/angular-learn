@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Output, booleanAttribute } from '@angular/core';
 import { Todo } from 'src/shared/models/todo';
-
 const filterTodosMethods = [
   (todo: Todo) => (todo),
   (todo: Todo) => (!todo.isComplete),
   (todo: Todo) => (todo.isComplete)
 ]
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,12 +18,10 @@ export class AppComponent {
     new Todo("To get a coffee"),
     
   ];
-  title = 'testing';
-  selectedOptionToShow:number = 0;
 
-  get todosToShow() :Array<Todo> {
-    return this.todos.filter(filterTodosMethods[this.selectedOptionToShow])
-  }
+  selectOption:number = 0;
+  
+  filterFunc = (todo:Todo):Todo|boolean => (todo) ;
 
   addNewTodo(todo: Todo) {
     this.todos.push(todo);

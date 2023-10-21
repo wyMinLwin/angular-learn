@@ -1,0 +1,5 @@
+<select class="my-2 px-2 py-1 rounded-md" [(ngModel)]="selectedOptionToShow" (ngModelChange)="emitSelectOption($event)">
+    <option value=0>All</option>
+    <option value=1>Incomplete</option>
+    <option value=2>Completed</option>
+</select>

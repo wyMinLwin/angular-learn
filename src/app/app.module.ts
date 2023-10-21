@@ -6,12 +6,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { FilterTodosComponent } from './filter-todos/filter-todos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoListComponent,
     AddTodoComponent,
+    FilterTodosComponent,
   ],
   imports: [
     BrowserModule,
